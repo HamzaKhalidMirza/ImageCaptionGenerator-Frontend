@@ -22,6 +22,7 @@ function dataURLtoFile(dataurl, filename) {
 export class HomePage {
 
   imgUrl: any;
+  captionGenerated: any;
 
   constructor(
     private camera: Camera,
@@ -51,16 +52,24 @@ export class HomePage {
   }
 
   async generateCaption() {
-    this.imgUrl = dataURLtoFile(this.imgUrl, 'caption-img.jpeg');
-    let toast = await this.toastCtrl.create({
-      message: this.imgUrl,
-      duration: 3000,
-      position: 'top'
-    });
+    // if(!this.imgUrl) { return; }
+    // this.imgUrl = dataURLtoFile(this.imgUrl, 'caption-img.jpeg');
+    // let toast = await this.toastCtrl.create({
+    //   message: this.imgUrl,
+    //   duration: 3000,
+    //   position: 'top'
+    // });
   
-    toast.onDidDismiss().then(() => {
-      console.log('Dismissed toast');
-    });
+    // toast.onDidDismiss().then(() => {
+    //   console.log('Dismissed toast');
+    // });
   
-    toast.present();  }
+    // toast.present();  
+    console.log('Hello');
+    this.captionGenerated = true;
+  }
+
+  hideCaption() {
+    this.captionGenerated = false;
+  }
 }
